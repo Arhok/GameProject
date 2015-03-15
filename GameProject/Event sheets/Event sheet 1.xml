@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="COMPRESSIONRATIO" sid="7551211031321507" static="0" type="number">0</variable>
+        <variable constant="1" name="StretchingForce" sid="1208994149226678" static="0" type="number">500</variable>
+        <event-group description="" sid="7104299505224084" title="Start">
+            <sub-events>
+                <event-block sid="3937085470835611">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="8615293527141917" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="6621065573290012" type="BirdInFront">
+                            <param id="0" name="X">130</param>
+                            <param id="1" name="Y">Self.Y</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="8666236919852984" type="BirdBehind">
+                            <param id="0" name="X">189</param>
+                            <param id="1" name="Y">Self.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="6606916928953439" title="Movement" />
+        <event-block sid="1420461123313449">
+            <conditions>
+                <condition id="0" name="On any touch start" sid="1661460979450549" type="Touch" />
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="9" name="Set vector Y" sid="3521951263255804" type="TopEdging">
+                    <param id="0" name="Vector Y">-STRETCHINGFORCE</param>
+                </action>
+                <action behavior="Platform" id="9" name="Set vector Y" sid="3510145461762136" type="BottomEdging">
+                    <param id="0" name="Vector Y">-STRETCHINGFORCE</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="7562808170851064" title="Stretching" />
+        <event-block sid="4309852268155044">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="5777479954803068" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="9154411950206876" type="System">
+                    <param id="0" name="Variable">COMPRESSIONRATIO</param>
+                    <param id="1" name="Value">BottomEdging.Y-TopEdging.Y</param>
+                </action>
+                <action id="-7" name="Set size" sid="1986770774269399" type="BirdInFront">
+                    <param id="0" name="Width">Self.Width</param>
+                    <param id="1" name="Height">(COMPRESSIONRATIO)*1.1</param>
+                </action>
+                <action id="-7" name="Set size" sid="3980047836623821" type="BirdBehind">
+                    <param id="0" name="Width">Self.Width</param>
+                    <param id="1" name="Height">(COMPRESSIONRATIO)*0.9</param>
+                </action>
+                <action id="-7" name="Set size" sid="116185330488067" type="TopEdging">
+                    <param id="0" name="Width">Self.Width</param>
+                    <param id="1" name="Height">(COMPRESSIONRATIO)*0.1</param>
+                </action>
+                <action id="-7" name="Set size" sid="2165099032102339" type="BottomEdging">
+                    <param id="0" name="Width">Self.Width</param>
+                    <param id="1" name="Height">(COMPRESSIONRATIO)*0.1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="9606007263619497" title="Collisions" />
+        <event-block sid="312563823259272">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="6757117889453126" type="TopEdging">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">228</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="9036058853824355" type="BirdInFront" />
+                <action id="-9" name="Destroy" sid="3379735461270332" type="BirdBehind" />
+                <action id="-15" name="Set visible" sid="9821942328640523" type="Boom">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-9" name="Destroy" sid="2163297127744853" type="TopEdging" />
+                <action id="-9" name="Destroy" sid="1648539724298473" type="BottomEdging" />
+            </actions>
+        </event-block>
+        <event-block any="1" sid="1035664764603235">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="4764021493421368" type="TopEdging">
+                    <param id="0" name="Object">PartOfTheWall</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="3929379419053105" type="TopEdging">
+                    <param id="0" name="Object">TopBorder</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set time scale" sid="385652536399206" type="System">
+                    <param id="0" name="Time scale">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
