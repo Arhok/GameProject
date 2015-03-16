@@ -10,7 +10,6 @@
     <unique-id>2fj9payb0tcnc</unique-id>
     <saved-with-version>19500</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
@@ -169,9 +168,9 @@
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6462429503804075" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                         <collision-poly>
-                            <point x="0" y="0" />
+                            <point x="0.00787402" y="0.00787402" />
                             <point x="1" y="0" />
-                            <point x="1" y="1" />
+                            <point x="0.992126" y="0.992126" />
                         </collision-poly>
                     </frame>
                 </animation>
@@ -197,16 +196,13 @@
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7087990373277087" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                         <collision-poly>
-                            <point x="0" y="0" />
-                            <point x="1" y="0" />
-                            <point x="0" y="1" />
+                            <point x="0.00396825" y="0.00396825" />
+                            <point x="0.996032" y="0.00396825" />
+                            <point x="0.00396825" y="0.996032" />
                         </collision-poly>
                     </frame>
                 </animation>
             </animation-folder>
-        </object-type>
-        <object-type name="Function" sid="7109985183043338">
-            <plugin id="Function" />
         </object-type>
     </object-folder>
     <families />
@@ -222,7 +218,6 @@
                 <use-mouse-input>Yes</use-mouse-input>
             </properties>
         </global-instance>
-        <global-instance type="Function" uid="13" />
     </global-instances>
     <sounds-folder />
     <music-folder />

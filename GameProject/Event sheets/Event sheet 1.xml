@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable constant="0" name="Previous" sid="3117667471821297" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentRestriction" sid="7733700051249972" static="0" type="number">0</variable>
         <variable constant="1" name="MAXIMUMRestriction" sid="6958271088905195" static="0" type="number">4</variable>
         <variable constant="0" name="TypeOfDirection" sid="8016609012406177" static="0" type="number">0</variable>
@@ -178,40 +179,38 @@
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block sid="4881424472861647">
+                                <event-block sid="5033801061454583">
                                     <conditions>
-                                        <condition id="1" name="Compare parameter" sid="5693635512009036" type="Function">
-                                            <param id="0" name="Index">TypeOfDirection</param>
+                                        <condition id="-8" name="Compare two values" sid="4565903448983602" type="System">
+                                            <param id="0" name="First value">TypeOfDirection</param>
                                             <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
+                                            <param id="2" name="Second value">0</param>
                                         </condition>
-                                        <condition id="1" name="Compare parameter" sid="9015600696503015" type="Function">
-                                            <param id="0" name="Index">CurrentRestriction</param>
+                                        <condition id="-8" name="Compare two values" sid="2410590238116139" type="System">
+                                            <param id="0" name="First value">CurrentRestriction</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">MAXIMUMRESTRICTION</param>
+                                            <param id="2" name="Second value">MAXIMUMRESTRICTION</param>
                                         </condition>
                                     </conditions>
                                     <actions />
-                                </event-block>
-                                <event-block sid="798517643449434">
-                                    <conditions>
-                                        <condition id="1" name="Compare parameter" sid="1823216726501887" type="Function">
-                                            <param id="0" name="Index">TypeOfDirection</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">1</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions />
-                                </event-block>
-                                <event-block sid="6625843580537996">
-                                    <conditions>
-                                        <condition id="1" name="Compare parameter" sid="9412059352659845" type="Function">
-                                            <param id="0" name="Index">TypeOfDirection</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">2</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="8818215353958133">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="277438391691202" type="System">
+                                                    <param id="0" name="First value">Previous</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                        </event-block>
+                                        <event-block sid="3801238709905639">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="4055704041503915" type="System" />
+                                            </conditions>
+                                            <actions />
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
