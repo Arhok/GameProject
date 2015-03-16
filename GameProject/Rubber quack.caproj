@@ -10,6 +10,7 @@
     <unique-id>2fj9payb0tcnc</unique-id>
     <saved-with-version>19500</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
@@ -162,7 +163,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="PartOfTheWall" sid="2090442095120827">
+        <object-type name="PartOfTheWallDown" sid="2090442095120827">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6462429503804075" speed="5">
@@ -175,6 +176,37 @@
                     </frame>
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="PartOfTheWall" sid="8845344424269337">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2676686639804248" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="PartOfTheWallUp" sid="9331082842297855">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7087990373277087" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Function" sid="7109985183043338">
+            <plugin id="Function" />
         </object-type>
     </object-folder>
     <families />
@@ -190,6 +222,7 @@
                 <use-mouse-input>Yes</use-mouse-input>
             </properties>
         </global-instance>
+        <global-instance type="Function" uid="13" />
     </global-instances>
     <sounds-folder />
     <music-folder />

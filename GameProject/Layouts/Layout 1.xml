@@ -29,6 +29,50 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
+                <instance type="PartOfTheWallUp" uid="11">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>379.653991699</x>
+                        <y>35</y>
+                        <z>0</z>
+                        <width>32</width>
+                        <height>32</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="PartOfTheWall" uid="9">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>347.986999512</x>
+                        <y>35</y>
+                        <z>0</z>
+                        <width>32</width>
+                        <height>32</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
                 <instance type="BottomBorder" uid="0">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
@@ -40,10 +84,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>160.535568237</x>
-                        <y>434.969604492</y>
+                        <y>450.492980957</y>
                         <z>0</z>
                         <width>320.164001465</width>
-                        <height>47.940765381</height>
+                        <height>20</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -51,7 +95,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="PartOfTheWall" uid="6">
+                <instance type="PartOfTheWallDown" uid="6">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-animation>Default</initial-animation>
@@ -61,8 +105,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>197.480743408</x>
-                        <y>36.027900696</y>
+                        <x>316.07699585</x>
+                        <y>35</y>
                         <z>0</z>
                         <width>32</width>
                         <height>32</height>
@@ -84,7 +128,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>452.351013184</x>
-                        <y>205.841003418</y>
+                        <y>225.841003418</y>
                         <z>0</z>
                         <width>71.724868774</width>
                         <height>140.974456787</height>
@@ -131,7 +175,7 @@
                                 <acceleration>300</acceleration>
                                 <deceleration>1500</deceleration>
                                 <jump-strength>0</jump-strength>
-                                <gravity>1500</gravity>
+                                <gravity>1000</gravity>
                                 <max-fall-speed>1000</max-fall-speed>
                                 <double-jump>Disabled</double-jump>
                                 <jump-sustain>0</jump-sustain>
@@ -144,10 +188,32 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>143</x>
-                        <y>98</y>
+                        <y>118</y>
                         <z>0</z>
                         <width>20.159999847</width>
                         <height>20.159999847</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="PartOfTheWallDown" uid="12">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>581.518920898</x>
+                        <y>30.027984619</y>
+                        <z>0</z>
+                        <width>32</width>
+                        <height>32</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -188,7 +254,7 @@
                                 <acceleration>300</acceleration>
                                 <deceleration>1500</deceleration>
                                 <jump-strength>0</jump-strength>
-                                <gravity>-1500</gravity>
+                                <gravity>-1000</gravity>
                                 <max-fall-speed>1000</max-fall-speed>
                                 <double-jump>Disabled</double-jump>
                                 <jump-sustain>0</jump-sustain>
@@ -201,7 +267,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>143</x>
-                        <y>320</y>
+                        <y>340</y>
                         <z>0</z>
                         <width>20</width>
                         <height>20</height>
@@ -223,7 +289,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>165.503005981</x>
-                        <y>209</y>
+                        <y>229</y>
                         <z>0</z>
                         <width>208.398040771</width>
                         <height>3.494232178</height>
@@ -245,7 +311,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>-90</x>
-                        <y>204.410995483</y>
+                        <y>224.410995483</y>
                         <z>0</z>
                         <width>139.14805603</width>
                         <height>172.533111572</height>
@@ -286,7 +352,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>147.807006836</x>
-                        <y>209.134002686</y>
+                        <y>229.134002686</y>
                         <z>0</z>
                         <width>242</width>
                         <height>182</height>

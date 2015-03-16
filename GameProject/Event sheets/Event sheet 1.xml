@@ -3,8 +3,11 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
-        <variable constant="0" name="COMPRESSIONRATIO" sid="7551211031321507" static="0" type="number">0</variable>
-        <variable constant="1" name="StretchingForce" sid="1208994149226678" static="0" type="number">500</variable>
+        <variable constant="0" name="TypeOfDirection" sid="8016609012406177" static="0" type="number">0</variable>
+        <variable constant="0" name="LengthOfRemainingSegment" sid="7574691837819264" static="0" type="number">0</variable>
+        <variable constant="0" name="CompressionRatio" sid="7551211031321507" static="0" type="number">0</variable>
+        <variable constant="0" name="Speed" sid="8903291927867561" static="0" type="number">2</variable>
+        <variable constant="1" name="StretchingForce" sid="1208994149226678" static="0" type="number">300</variable>
         <event-group description="" sid="7104299505224084" title="Start">
             <sub-events>
                 <event-block sid="3937085470835611">
@@ -24,80 +27,237 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="6606916928953439" title="Movement" />
-        <event-block sid="1420461123313449">
-            <conditions>
-                <condition id="0" name="On any touch start" sid="1661460979450549" type="Touch" />
-            </conditions>
-            <actions>
-                <action behavior="Platform" id="9" name="Set vector Y" sid="3521951263255804" type="TopEdging">
-                    <param id="0" name="Vector Y">-STRETCHINGFORCE</param>
-                </action>
-                <action behavior="Platform" id="9" name="Set vector Y" sid="3510145461762136" type="BottomEdging">
-                    <param id="0" name="Vector Y">-STRETCHINGFORCE</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-group description="" sid="7562808170851064" title="Stretching" />
-        <event-block sid="4309852268155044">
-            <conditions>
-                <condition id="-1" name="Every tick" sid="5777479954803068" type="System" />
-            </conditions>
-            <actions>
-                <action id="-9" name="Set value" sid="9154411950206876" type="System">
-                    <param id="0" name="Variable">COMPRESSIONRATIO</param>
-                    <param id="1" name="Value">BottomEdging.Y-TopEdging.Y</param>
-                </action>
-                <action id="-7" name="Set size" sid="1986770774269399" type="BirdInFront">
-                    <param id="0" name="Width">Self.Width</param>
-                    <param id="1" name="Height">(COMPRESSIONRATIO)*1.1</param>
-                </action>
-                <action id="-7" name="Set size" sid="3980047836623821" type="BirdBehind">
-                    <param id="0" name="Width">Self.Width</param>
-                    <param id="1" name="Height">(COMPRESSIONRATIO)*0.9</param>
-                </action>
-                <action id="-7" name="Set size" sid="116185330488067" type="TopEdging">
-                    <param id="0" name="Width">Self.Width</param>
-                    <param id="1" name="Height">(COMPRESSIONRATIO)*0.1</param>
-                </action>
-                <action id="-7" name="Set size" sid="2165099032102339" type="BottomEdging">
-                    <param id="0" name="Width">Self.Width</param>
-                    <param id="1" name="Height">(COMPRESSIONRATIO)*0.1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-group description="" sid="9606007263619497" title="Collisions" />
-        <event-block sid="312563823259272">
-            <conditions>
-                <condition id="-2" name="Compare Y" sid="6757117889453126" type="TopEdging">
-                    <param id="0" name="Comparison">4</param>
-                    <param id="1" name="Y co-ordinate">228</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Destroy" sid="9036058853824355" type="BirdInFront" />
-                <action id="-9" name="Destroy" sid="3379735461270332" type="BirdBehind" />
-                <action id="-15" name="Set visible" sid="9821942328640523" type="Boom">
-                    <param id="0" name="Visibility">1</param>
-                </action>
-                <action id="-9" name="Destroy" sid="2163297127744853" type="TopEdging" />
-                <action id="-9" name="Destroy" sid="1648539724298473" type="BottomEdging" />
-            </actions>
-        </event-block>
-        <event-block any="1" sid="1035664764603235">
-            <conditions>
-                <condition id="1" name="Is overlapping another object" sid="4764021493421368" type="TopEdging">
-                    <param id="0" name="Object">PartOfTheWall</param>
-                </condition>
-                <condition id="1" name="Is overlapping another object" sid="3929379419053105" type="TopEdging">
-                    <param id="0" name="Object">TopBorder</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-13" name="Set time scale" sid="385652536399206" type="System">
-                    <param id="0" name="Time scale">0</param>
-                </action>
-            </actions>
-        </event-block>
+        <event-group description="" sid="6606916928953439" title="Movement">
+            <sub-events>
+                <event-block sid="1420461123313449">
+                    <conditions>
+                        <condition id="0" name="On any touch start" sid="1661460979450549" type="Touch" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="9" name="Set vector Y" sid="3521951263255804" type="TopEdging">
+                            <param id="0" name="Vector Y">-STRETCHINGFORCE</param>
+                        </action>
+                        <action behavior="Platform" id="9" name="Set vector Y" sid="3510145461762136" type="BottomEdging">
+                            <param id="0" name="Vector Y">-STRETCHINGFORCE</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3350385321838643">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="7599839530916657" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="4547257956800912" type="PartOfTheWallDown">
+                            <param id="0" name="X">Self.X-Speed</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="440060863547315" type="PartOfTheWall">
+                            <param id="0" name="X">Self.X-Speed</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="1978068721663354" type="PartOfTheWallUp">
+                            <param id="0" name="X">Self.X-Speed</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="6750119404823357" type="System">
+                            <param id="0" name="Variable">CompressionRatio</param>
+                            <param id="1" name="Value">Speed</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="7562808170851064" title="Stretching">
+            <sub-events>
+                <event-block sid="4309852268155044">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="5777479954803068" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="9154411950206876" type="System">
+                            <param id="0" name="Variable">CompressionRatio</param>
+                            <param id="1" name="Value">BottomEdging.Y-TopEdging.Y</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="1986770774269399" type="BirdInFront">
+                            <param id="0" name="Width">Self.Width</param>
+                            <param id="1" name="Height">(COMPRESSIONRATIO)*1.1</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="3980047836623821" type="BirdBehind">
+                            <param id="0" name="Width">Self.Width</param>
+                            <param id="1" name="Height">(COMPRESSIONRATIO)*0.9</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="116185330488067" type="TopEdging">
+                            <param id="0" name="Width">Self.Width</param>
+                            <param id="1" name="Height">(COMPRESSIONRATIO)*0.1</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2165099032102339" type="BottomEdging">
+                            <param id="0" name="Width">Self.Width</param>
+                            <param id="1" name="Height">(COMPRESSIONRATIO)*0.1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="9606007263619497" title="Collisions">
+            <sub-events>
+                <event-block sid="312563823259272">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="6757117889453126" type="TopEdging">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Y co-ordinate">228</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="9036058853824355" type="BirdInFront" />
+                        <action id="-9" name="Destroy" sid="3379735461270332" type="BirdBehind" />
+                        <action id="-15" name="Set visible" sid="9821942328640523" type="Boom">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="2163297127744853" type="TopEdging" />
+                        <action id="-9" name="Destroy" sid="1648539724298473" type="BottomEdging" />
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="1035664764603235">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="3929379419053105" type="TopEdging">
+                            <param id="0" name="Object">TopBorder</param>
+                        </condition>
+                        <condition id="1" name="Is overlapping another object" sid="4764021493421368" type="TopEdging">
+                            <param id="0" name="Object">PartOfTheWallDown</param>
+                        </condition>
+                        <condition id="1" name="Is overlapping another object" sid="6851849221404217" type="TopEdging">
+                            <param id="0" name="Object">PartOfTheWall</param>
+                        </condition>
+                        <condition id="1" name="Is overlapping another object" sid="2695325357257197" type="TopEdging">
+                            <param id="0" name="Object">PartOfTheWallUp</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="385652536399206" type="System">
+                            <param id="0" name="Time scale">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="2451145677343913" type="System">
+                            <param id="0" name="Variable">Speed</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3957402300541774" title="Generation">
+            <sub-events>
+                <event-block sid="3758672438674952">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="1373527555611027" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="9896957235499711" type="System">
+                            <param id="0" name="Variable">LengthOfRemainingSegment</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="5618115754142911" type="System">
+                            <param id="0" name="Variable">LengthOfRemainingSegment</param>
+                            <param id="1" name="Value">320</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="6643183021374277">
+                            <conditions>
+                                <condition id="-10" name="For" sid="4117636733068835" type="System">
+                                    <param id="0" name="Name">&quot;X&quot;</param>
+                                    <param id="1" name="Start index">1</param>
+                                    <param id="2" name="End index">10</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="2871764374426038" type="System">
+                                    <param id="0" name="Variable">TypeOfDirection</param>
+                                    <param id="1" name="Value">random(3)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="4881424472861647">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="5693635512009036" type="Function">
+                                            <param id="0" name="Index">TypeOfDirection</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                </event-block>
+                                <event-block sid="798517643449434">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="1823216726501887" type="Function">
+                                            <param id="0" name="Index">TypeOfDirection</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                </event-block>
+                                <event-block sid="6625843580537996">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="9412059352659845" type="Function">
+                                            <param id="0" name="Index">TypeOfDirection</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="6966963924805533" title="Destruction">
+            <sub-events>
+                <event-block sid="7563576521526151">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="879852341292724" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="1971683940858455">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="4637832220637626" type="PartOfTheWallDown">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">-30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="8731053837297621" type="PartOfTheWallDown" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="9083794109910847">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="2288690507920912" type="PartOfTheWall">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">-30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="6519236463228847" type="PartOfTheWall" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="1654969054943804">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="2921116631745895" type="PartOfTheWallUp">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">-30</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="3903047230724212" type="PartOfTheWallUp" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>
