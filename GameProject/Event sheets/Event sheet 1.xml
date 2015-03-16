@@ -3,6 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable constant="0" name="CurrentRestriction" sid="7733700051249972" static="0" type="number">0</variable>
+        <variable constant="1" name="MAXIMUMRestriction" sid="6958271088905195" static="0" type="number">4</variable>
         <variable constant="0" name="TypeOfDirection" sid="8016609012406177" static="0" type="number">0</variable>
         <variable constant="0" name="LengthOfRemainingSegment" sid="7574691837819264" static="0" type="number">0</variable>
         <variable constant="0" name="CompressionRatio" sid="7551211031321507" static="0" type="number">0</variable>
@@ -182,6 +184,11 @@
                                             <param id="0" name="Index">TypeOfDirection</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">0</param>
+                                        </condition>
+                                        <condition id="1" name="Compare parameter" sid="9015600696503015" type="Function">
+                                            <param id="0" name="Index">CurrentRestriction</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">MAXIMUMRESTRICTION</param>
                                         </condition>
                                     </conditions>
                                     <actions />
