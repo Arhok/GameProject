@@ -192,17 +192,29 @@
                                             <param id="2" name="Second value">MAXIMUMRESTRICTION</param>
                                         </condition>
                                     </conditions>
-                                    <actions />
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="1922255836921449" type="System">
+                                            <param id="0" name="Variable">Previous</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
                                     <sub-events>
                                         <event-block sid="8818215353958133">
                                             <conditions>
                                                 <condition id="-8" name="Compare two values" sid="277438391691202" type="System">
                                                     <param id="0" name="First value">Previous</param>
                                                     <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Second value">0</param>
+                                                    <param id="2" name="Second value">3</param>
                                                 </condition>
                                             </conditions>
-                                            <actions />
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="4775195028141447" type="System">
+                                                    <param id="0" name="Object to create">PartOfTheWallDown</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">350+loopindex(&quot;X&quot;)*32</param>
+                                                    <param id="3" name="Y">0</param>
+                                                </action>
+                                            </actions>
                                         </event-block>
                                         <event-block sid="3801238709905639">
                                             <conditions>
