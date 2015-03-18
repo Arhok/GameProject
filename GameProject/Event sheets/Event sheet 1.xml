@@ -5,7 +5,7 @@
     <events>
         <variable constant="0" name="Previous" sid="3117667471821297" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentRestriction" sid="7733700051249972" static="0" type="number">0</variable>
-        <variable constant="1" name="MAXIMUMRESTRICTION" sid="6958271088905195" static="0" type="number">3</variable>
+        <variable constant="1" name="MAXIMUMRESTRICTION" sid="6958271088905195" static="0" type="number">2</variable>
         <variable constant="0" name="TypeOfDirection" sid="8016609012406177" static="0" type="number">0</variable>
         <variable constant="0" name="LengthOfRemainingSegment" sid="7574691837819264" static="0" type="number">0</variable>
         <variable constant="0" name="CompressionRatio" sid="7551211031321507" static="0" type="number">0</variable>
@@ -148,19 +148,20 @@
             <sub-events>
                 <event-block sid="3758672438674952">
                     <conditions>
-                        <condition id="-6" name="Every X seconds" sid="1373527555611027" type="System">
-                            <param id="0" name="Interval (seconds)">1.0</param>
-                        </condition>
                         <condition id="-14" name="Compare variable" sid="9896957235499711" type="System">
                             <param id="0" name="Variable">LengthOfRemainingSegment</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">100</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
                         <action id="-10" name="Add to" sid="5618115754142911" type="System">
                             <param id="0" name="Variable">LengthOfRemainingSegment</param>
-                            <param id="1" name="Value">320</param>
+                            <param id="1" name="Value">420</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="3372617295325039" type="System">
+                            <param id="0" name="Variable">CurrentRestriction</param>
+                            <param id="1" name="Value">0</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -189,62 +190,175 @@
                                         <condition id="-8" name="Compare two values" sid="8010186550234783" type="System">
                                             <param id="0" name="First value">CurrentRestriction</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Second value">0</param>
+                                            <param id="2" name="Second value">1</param>
                                         </condition>
                                     </conditions>
                                     <actions>
                                         <action id="-9" name="Set value" sid="5224872508623422" type="System">
                                             <param id="0" name="Variable">CurrentRestriction</param>
-                                            <param id="1" name="Value">0</param>
+                                            <param id="1" name="Value">1</param>
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="5033801061454583">
+                                <event-block sid="2230370572826244">
                                     <conditions>
-                                        <condition id="-21" name="Is between values" sid="8428261474954698" type="System">
+                                        <condition id="-21" name="Is between values" sid="8805585845876776" type="System">
                                             <param id="0" name="Value">TypeOfDirection</param>
                                             <param id="1" name="Lower bound">0</param>
                                             <param id="2" name="Upper bound">1</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action id="-9" name="Set value" sid="1922255836921449" type="System">
-                                            <param id="0" name="Variable">Previous</param>
-                                            <param id="1" name="Value">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
                                     <sub-events>
-                                        <event-block sid="8818215353958133">
+                                        <event-block sid="889895609173998">
                                             <conditions>
-                                                <condition id="-8" name="Compare two values" sid="277438391691202" type="System">
+                                                <condition id="-8" name="Compare two values" sid="3948315445079467" type="System">
                                                     <param id="0" name="First value">Previous</param>
                                                     <param id="1" name="Comparison">0</param>
                                                     <param id="2" name="Second value">2</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="-3" name="Create object" sid="8559049000416917" type="System">
+                                                <action id="-3" name="Create object" sid="9840826899566719" type="System">
                                                     <param id="0" name="Object to create">PartOfTheWallDown</param>
                                                     <param id="1" name="Layer">0</param>
                                                     <param id="2" name="X">350+loopindex(&quot;X&quot;)*32</param>
                                                     <param id="3" name="Y">35+CurrentRestriction*32</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="4823046704944521" type="System">
+                                                    <param id="0" name="Variable">Previous</param>
+                                                    <param id="1" name="Value">0</param>
                                                 </action>
                                             </actions>
                                         </event-block>
-                                        <event-block sid="3801238709905639">
+                                        <event-block sid="9618077068129843">
                                             <conditions>
-                                                <condition id="-22" name="Else" sid="4055704041503915" type="System" />
+                                                <condition id="-22" name="Else" sid="8577643807567691" type="System" />
                                             </conditions>
                                             <actions>
-                                                <action id="-3" name="Create object" sid="4775195028141447" type="System">
+                                                <action id="-10" name="Add to" sid="7357784947395407" type="System">
+                                                    <param id="0" name="Variable">CurrentRestriction</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="-3" name="Create object" sid="2217553614012891" type="System">
                                                     <param id="0" name="Object to create">PartOfTheWallDown</param>
                                                     <param id="1" name="Layer">0</param>
                                                     <param id="2" name="X">350+loopindex(&quot;X&quot;)*32</param>
                                                     <param id="3" name="Y">35+CurrentRestriction*32</param>
                                                 </action>
-                                                <action id="-10" name="Add to" sid="5979667333763104" type="System">
+                                                <action id="-9" name="Set value" sid="6577678973162596" type="System">
+                                                    <param id="0" name="Variable">Previous</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="6598643865440998">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="4200269111981285" type="System" />
+                                        <condition id="-21" name="Is between values" sid="7702789195844037" type="System">
+                                            <param id="0" name="Value">TypeOfDirection</param>
+                                            <param id="1" name="Lower bound">1</param>
+                                            <param id="2" name="Upper bound">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="2142374236940095">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="6414646401600048" type="System">
+                                                    <param id="0" name="First value">Previous</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-11" name="Subtract from" sid="1360200567134065" type="System">
                                                     <param id="0" name="Variable">CurrentRestriction</param>
                                                     <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="-3" name="Create object" sid="4013016903734947" type="System">
+                                                    <param id="0" name="Object to create">PartOfTheWall</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">350+loopindex(&quot;X&quot;)*32</param>
+                                                    <param id="3" name="Y">35+CurrentRestriction*32</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="3419031353838103" type="System">
+                                                    <param id="0" name="Variable">Previous</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="8827294199891909">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="6378219150910721" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="4084478624481624" type="System">
+                                                    <param id="0" name="Object to create">PartOfTheWall</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">350+loopindex(&quot;X&quot;)*32</param>
+                                                    <param id="3" name="Y">35+CurrentRestriction*32</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="8292480132955683" type="System">
+                                                    <param id="0" name="Variable">Previous</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="8524300395071287">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="4931061466146066" type="System" />
+                                        <condition id="-21" name="Is between values" sid="8428261474954698" type="System">
+                                            <param id="0" name="Value">TypeOfDirection</param>
+                                            <param id="1" name="Lower bound">2</param>
+                                            <param id="2" name="Upper bound">3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="5020606183530866">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="1547382329452931" type="System">
+                                                    <param id="0" name="First value">Previous</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-11" name="Subtract from" sid="292270755461129" type="System">
+                                                    <param id="0" name="Variable">CurrentRestriction</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="-3" name="Create object" sid="2795467852548742" type="System">
+                                                    <param id="0" name="Object to create">PartOfTheWallUp</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">350+loopindex(&quot;X&quot;)*32</param>
+                                                    <param id="3" name="Y">35+CurrentRestriction*32</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="8672149774740241" type="System">
+                                                    <param id="0" name="Variable">Previous</param>
+                                                    <param id="1" name="Value">2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="5372846272809985">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="3191844594994942" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="9587068596468335" type="System">
+                                                    <param id="0" name="Object to create">PartOfTheWallUp</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">350+loopindex(&quot;X&quot;)*32</param>
+                                                    <param id="3" name="Y">35+CurrentRestriction*32</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="2599942083849867" type="System">
+                                                    <param id="0" name="Variable">Previous</param>
+                                                    <param id="1" name="Value">2</param>
                                                 </action>
                                             </actions>
                                         </event-block>
